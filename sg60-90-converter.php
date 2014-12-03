@@ -81,7 +81,8 @@ class sgConverter {
 	function sg_converter_action() {
 		if( $_POST && isset( $_POST['_sg_convert_id'] ) ) {
 			$converter = new _SG_CONVERTER();
-			if( $converter === 'Not Able to Convert' ) {
+			$converterResp = $converter->converter( intval( $_POST['_sg_convert_id'] ) );
+			if( $converterResp === 'Not Able to Convert' ) {
 				add_action( 'admin_notices', function(){
 					?>
 					<div class="error">
